@@ -32,13 +32,13 @@ def DrawBoard(board):
 def MovePiece(board, from_square, to_square):
 
     if IsMoveLegal(board, from_square, to_square):
-      if (piece == 'p' and row == 7) or (piece == 'P' and row == 0):
+      piece = board[from_square[0]][from_square[1]]
+      if (piece == 'p' and to_square[0] == 7) or (piece == 'P' and to_square[0] == 0):
             promoted_piece = 'Q' if piece == 'p' else 'q'
-            board[row][col] = promoted_piece
-     piece = board[from_square[0]][from_square[1]]
-     board[from_square[0]][from_square[1]] = '.'
-     board[to_square[0]][to_square[1]] = piece
-     return board
+            board[from_square[0]][from_square[1]] = promoted_piece
+      board[from_square[0]][from_square[1]] = '.'
+      board[to_square[0]][to_square[1]] = piece
+      return board
     else:
       return board
 
